@@ -36,11 +36,6 @@ outPut
 626363D0-90D4-06BF-C281-384E4E69D3E2
 ```
 
-## Credits
-Inspiration from Yann Lechelle's [OpenIDFA](https://github.com/ylechelle/OpenIDFA)。It is not well maintained for 3 years.
-
-SimulateIDFA uses a larger set of fingerprinting techniques. SimulateIDFA are also not time limited.
-
 ## license
 
 ```
