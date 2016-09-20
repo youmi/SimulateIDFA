@@ -30,7 +30,7 @@ NSString *simulateIDFA = [SimulateIDFA createSimulateIDFA];
 NSLog(@"%@", simulateIDFA);
 ```
 
-outPut
+Output
 
 ```
 626363D0-90D4-06BF-C281-384E4E69D3E2

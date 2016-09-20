@@ -70,7 +70,7 @@ static NSString *getSystemHardwareByName(const char *typeSpecifier) {
     return results;
 }
 
-static NSUInteger GetSysInfo(uint typeSpecifier) {
+static NSUInteger getSysInfo(uint typeSpecifier) {
     size_t size = sizeof(int);
     int results;
     int mib[2] = {CTL_HW, typeSpecifier};
@@ -107,7 +107,7 @@ static NSString *systemHardwareInfo(){
     NSString *model = getSystemHardwareByName(SIDFAModel);
     NSString *machine = getSystemHardwareByName(SIDFAMachine);
     NSString *carInfo = carrierInfo();
-    NSUInteger totalMemory = GetSysInfo(HW_PHYSMEM);
+    NSUInteger totalMemory = getSysInfo(HW_PHYSMEM);
     
     return [NSString stringWithFormat:@"%@,%@,%@,%td",model,machine,carInfo,totalMemory];
 }
@@ -155,7 +155,7 @@ static NSString *combineTwoFingerPrint(unsigned char *fp1,unsigned char *fp2){
 
 + (NSString *)createSimulateIDFA{
     NSString *sysBootTime = systemBootTime();
-    NSString *CC= countryCode();
+    NSString *countryC= countryCode();
     NSString *languge = language();
     NSString *deviceN = deviceName();
     
@@ -164,8 +164,8 @@ static NSString *combineTwoFingerPrint(unsigned char *fp1,unsigned char *fp2){
     NSString *systemFT = systemFileTime();
     NSString *diskS = disk();
     
-    NSString *fingerPrintUnstablePart = [NSString stringWithFormat:@"%@,%@,%@,%@",sysBootTime,CC,languge,deviceN];
-    NSString *fingerPrintStablePart = [NSString stringWithFormat:@"%@,%@,%@,%@",sysVer,systemHardware,systemFT,diskS];
+    NSString *fingerPrintUnstablePart = [NSString stringWithFormat:@"%@,%@,%@,%@", sysBootTime, countryC, languge, deviceN];
+    NSString *fingerPrintStablePart = [NSString stringWithFormat:@"%@,%@,%@,%@", sysVer, systemHardware, systemFT, diskS];
     
     unsigned char fingerPrintUnstablePartMD5[CC_MD5_DIGEST_LENGTH/2];
     MD5_16(fingerPrintUnstablePart,fingerPrintUnstablePartMD5);
