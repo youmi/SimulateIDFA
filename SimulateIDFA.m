@@ -126,7 +126,7 @@ static NSString *disk(){
     return diskSize;
 }
 
-void MD5_16(NSString *source, unsigned char *ret){
+static void MD5_16(NSString *source, unsigned char *ret){
     const char* str = [source UTF8String];
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5(str, (CC_LONG)strlen(str), result);
